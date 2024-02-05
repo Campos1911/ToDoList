@@ -1,8 +1,12 @@
 "use client";
 
-import { Input, Checkbox, Flex, Text } from "@chakra-ui/react";
+import { Input, Button, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
+
+import Todo from "../components/todo";
+
 import "./page.css";
+
 export default function Home() {
   type dadosType = {
     id: number;
@@ -39,22 +43,31 @@ export default function Home() {
       >
         T O D O
       </Text>
-      <Input
-        placeholder="Insira a próxima tarefa a ser completada"
-        width="770px"
-        textColor="white"
-        focusBorderColor="white"
-        padding="26px 10px"
-        marginBottom="2vh"
-        backgroundColor="rgb(27, 27, 50)"
-        border="none"
-      />
+      <Flex>
+        <Input
+          placeholder="Insira a próxima tarefa a ser completada"
+          width="770px"
+          textColor="white"
+          focusBorderColor="white"
+          padding="26px 10px"
+          marginBottom="2vh"
+          backgroundColor="rgb(27, 27, 50)"
+          border="none"
+        />
+        <Button
+          backgroundColor="rgb(2, 0, 59)"
+          transition="0.5s"
+          color="white"
+          marginLeft="1vh"
+          marginTop="1vh"
+          type="submit"
+        >
+          ✓
+        </Button>
+      </Flex>
       <div className="todo-list">
         {dados.map((todo) => (
-          <Flex flexDir="row" backgroundColor="rgb(27, 27, 50)" padding="18px 300px">
-            <Checkbox marginRight="8px" />
-            <Text fontSize="18px">{todo.text}</Text>
-          </Flex>
+          <Todo todo={todo} />
         ))}
       </div>
     </Flex>
