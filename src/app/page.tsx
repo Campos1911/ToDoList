@@ -1,13 +1,12 @@
 "use client";
 
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Input, Checkbox, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import "./page.css";
 export default function Home() {
-  type dadosData = {
+  type dadosType = {
     id: number;
     text: string;
-    category: string;
     isComplete: boolean;
   };
 
@@ -15,40 +14,47 @@ export default function Home() {
     {
       id: 1,
       text: "Testando ToDo",
-      category: "Estudo",
       isComplete: false,
     },
     {
       id: 2,
       text: "Testando ToDo 2",
-      category: "Aulas",
       isComplete: false,
     },
     {
       id: 3,
       text: "Testando ToDo 3",
-      category: "Teste",
       isComplete: false,
     },
   ]);
 
   return (
-    <Flex flexDir="column" alignItems="center" padding="30px" marginTop="20vh">
-      <Text fontSize="32px" fontWeight="bold" color="white" marginRight="30vw">
+    <Flex flexDir="column" alignItems="center" padding="30px" marginTop="14vh">
+      <Text
+        fontSize="36px"
+        fontWeight="bold"
+        color="white"
+        marginRight="28vw"
+        marginBottom="5vh"
+      >
         T O D O
       </Text>
+      <Input
+        placeholder="Insira a próxima tarefa a ser completada"
+        width="770px"
+        textColor="white"
+        focusBorderColor="white"
+        padding="26px 10px"
+        marginBottom="2vh"
+        backgroundColor="rgb(27, 27, 50)"
+        border="none"
+      />
       <div className="todo-list">
         {dados.map((todo) => (
-          <div className="todo-apparence">
-            <div className="todo">
-              <Text>{todo.text}</Text>
-              <Text>({todo.category})</Text>
-            </div>
-            <Flex marginBottom="30px" border="2px solid white" padding="10px" borderRadius="5px">
-              <Button marginRight="5px">Completar</Button>
-              <Button>X</Button>
-            </Flex>
-          </div>
+          <Flex flexDir="row" backgroundColor="rgb(27, 27, 50)" padding="18px 300px">
+            <Checkbox marginRight="8px" />
+            <Text fontSize="18px">{todo.text}</Text>
+          </Flex>
         ))}
       </div>
     </Flex>
