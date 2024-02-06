@@ -3,9 +3,10 @@
 import { Input, Button, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
-import Todo from "../components/todo";
+import Todo from "../components/TodoList/todo";
 
 import "./page.css";
+import { dadosProps } from "@/interfaces/dadosProps";
 
 export default function Home() {
   type dadosType = {
@@ -14,7 +15,7 @@ export default function Home() {
     isComplete: boolean;
   };
 
-  const [dados, setDados] = useState([
+  const [dados, setDados] = useState<dadosProps[]>([
     {
       id: 1,
       text: "Testando ToDo",
