@@ -1,12 +1,28 @@
 import { dadosProps } from "@/interfaces/dadosProps";
-import { Checkbox, Flex, Text } from "@chakra-ui/react";
-import { jsx } from "@emotion/react";
+import { Button, Checkbox, Flex, Text } from "@chakra-ui/react";
 
-export default function Todo({todo}: {todo:dadosProps}) {
+export default function Todo({ todo }: { todo: dadosProps }) {
   return (
-    <Flex flexDir="row" padding="18px 300px" borderBottom="solid 1px rgb(97, 97, 97)">
-      <Checkbox marginRight="8px" />
-      <Text fontSize="18px">{todo.text}</Text>
-    </Flex>
+    <>
+      <Flex
+        flexDir="row"
+        padding="10px 300px"
+        borderBottom="solid 1px rgb(48, 48, 66)"
+      >
+        <Checkbox marginRight="8px" />
+        <Text marginTop="3px" fontSize="12px">
+          {todo.text}
+        </Text>
+        <Button
+          color="white"
+          marginLeft="8px"
+          size="xs"
+          variant="outline"
+          _hover={{ bgColor: "white", color: "black" }}
+        >
+          X
+        </Button>
+      </Flex>
+    </>
   );
 }
