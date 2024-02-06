@@ -4,7 +4,7 @@ import { Input, Button, Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 import Todo from "../components/TodoList/todo";
-import Todoform from "@/components/Todo Form/todoform";
+import Todoform from "@/components/Todo Form/todoform.jsx";
 
 import "./page.css";
 import { dadosProps } from "@/interfaces/dadosProps";
@@ -34,6 +34,19 @@ export default function Home() {
     },
   ]);
 
+  const addTask = (text: string) => {
+    const newTask = [
+      ...dados,
+      {
+        id: Math.floor(Math.random() * (10000)),
+        text,
+        isComplete: false
+      },
+    ];
+
+    setDados(newTask);
+  };
+
   return (
     <Flex flexDir="column" alignItems="center" padding="30px" marginTop="14vh">
       <Text
@@ -45,10 +58,10 @@ export default function Home() {
       >
         T O D O
       </Text>
-      <Todoform/>
+      <Todoform addTask={addTask}/>
       <div className="todo-list">
         {dados.map((todo) => (
-          <Todo todo={todo} />
+          <Todo key={todo.id} todo={todo} />
         ))}
       </div>
     </Flex>
