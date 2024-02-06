@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 
 import { Flex, Input, Button } from "@chakra-ui/react";
 
-const todoform = (addTask:any) => {
+import { dadosProps } from "@/interfaces/dadosProps";
+
+
+const todoform = ({addTask}:any) => {
   const [value, setValue] = useState("");
 
   const handleClick = () => {
@@ -20,7 +23,7 @@ const todoform = (addTask:any) => {
         focusBorderColor="white"
         padding="26px 10px"
         marginBottom="2vh"
-        marginLeft="6vh"
+        marginLeft="7vh"
         backgroundColor="rgb(27, 27, 50)"
         border="none"
         onChange={(e) => setValue(e.target.value)}
