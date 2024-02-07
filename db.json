@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": "2e19",
-      "text": "Ver o curso de React",
-      "isComplete": false
-    },
-    {
       "id": "476c",
       "text": "dsadaszz",
       "isComplete": false
@@ -28,11 +23,6 @@
     {
       "id": "611b",
       "text": "dasdqwe",
-      "isComplete": false
-    },
-    {
-      "id": "202d",
-      "text": "testando mais uma vez",
       "isComplete": false
     }
   ]

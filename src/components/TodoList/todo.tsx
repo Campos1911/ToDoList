@@ -2,11 +2,16 @@ import { dadosProps } from "@/interfaces/dadosProps";
 import { Button, Checkbox, Flex, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
-export default function Todo( {todo}: {todo:dadosProps} ) {
-
-  const handleDelete = () => {
-    
-  }
+export default function Todo({ todo }: { todo: dadosProps }) {
+  
+  
+  const removeTodo = () => {
+    fetch("http://localhost:5000/todos/" + todo.id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json()) // or res.json()
+      .then((res) => console.log(res));
+  };
 
   return (
     <>
@@ -25,7 +30,7 @@ export default function Todo( {todo}: {todo:dadosProps} ) {
           size="xs"
           variant="outline"
           _hover={{ bgColor: "white", color: "black" }}
-          onClick={handleDelete}
+          onClick={removeTodo}
         >
           X
         </Button>
