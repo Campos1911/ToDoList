@@ -1,7 +1,8 @@
 import { dadosProps } from "@/interfaces/dadosProps";
 import { Button, Checkbox, Flex, Text } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 
-export default function Todo({ todo }: { todo: dadosProps }) {
+export default function Todo( {todo}: {todo:dadosProps} ) {
   return (
     <>
       <Flex
