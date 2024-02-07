@@ -28,6 +28,7 @@ const todoform = () => {
 
   const handleClick = () => {
     if(!value) return
+    setValue({text: "", isComplete: false});
     dbWrite();
   };
 
@@ -45,6 +46,7 @@ const todoform = () => {
         border="none"
         onChange={handleChange}
         name="text"
+        value={value.text}
       />
       <Button
         backgroundColor="rgb(2, 0, 59)"
