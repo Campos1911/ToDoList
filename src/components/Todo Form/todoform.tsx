@@ -5,13 +5,30 @@ import { Flex, Input, Button } from "@chakra-ui/react";
 import { dadosProps } from "@/interfaces/dadosProps";
 
 
-const todoform = ({addTask}:any) => {
-  const [value, setValue] = useState("");
+const todoform = () => {
+  const [value, setValue] = useState({text: ""});
+
+  const dbWrite = () => {
+    fetch("http://localhost:5000/todos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(value),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+  }
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValue((anterior) => ({ ...anterior, [name]: value }));
+    console.log(value);
+  }
 
   const handleClick = () => {
     if(!value) return
-    addTask(value);
-    setValue("");
+    dbWrite();
   };
 
   return (
@@ -26,8 +43,8 @@ const todoform = ({addTask}:any) => {
         marginLeft="7vh"
         backgroundColor="rgb(27, 27, 50)"
         border="none"
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
+        onChange={handleChange}
+        name="text"
       />
       <Button
         backgroundColor="rgb(2, 0, 59)"

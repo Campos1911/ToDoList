@@ -14,6 +14,14 @@
       "id": 3,
       "text": "Testando ToDo 3",
       "isComplete": false
+    },
+    {
+      "id": "ead7",
+      "text": "[object Object]dasdsadasdas"
+    },
+    {
+      "id": "cdb1",
+      "text": "dsadasda"
     }
   ]
 }

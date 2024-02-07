@@ -29,7 +29,6 @@ export default function Home() {
       .then((data) => setDados(data));
   });
 
-
   return (
     <Flex flexDir="column" alignItems="center" padding="30px" marginTop="14vh">
       <Text
