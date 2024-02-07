@@ -11,7 +11,6 @@ import { dadosProps } from "@/interfaces/dadosProps";
 
 export default function Home() {
   type dadosType = {
-    id: number;
     text: string;
     isComplete: boolean;
   };

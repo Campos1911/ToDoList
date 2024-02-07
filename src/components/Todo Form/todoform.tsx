@@ -6,7 +6,7 @@ import { dadosProps } from "@/interfaces/dadosProps";
 
 
 const todoform = () => {
-  const [value, setValue] = useState({text: ""});
+  const [value, setValue] = useState({text: "", isComplete: false});
 
   const dbWrite = () => {
     fetch("http://localhost:5000/todos", {

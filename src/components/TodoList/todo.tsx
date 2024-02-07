@@ -3,6 +3,11 @@ import { Button, Checkbox, Flex, Text } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 export default function Todo( {todo}: {todo:dadosProps} ) {
+
+  const handleDelete = () => {
+    
+  }
+
   return (
     <>
       <Flex
@@ -20,6 +25,7 @@ export default function Todo( {todo}: {todo:dadosProps} ) {
           size="xs"
           variant="outline"
           _hover={{ bgColor: "white", color: "black" }}
+          onClick={handleDelete}
         >
           X
         </Button>

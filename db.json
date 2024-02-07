@@ -1,27 +1,9 @@
 {
   "todos": [
     {
-      "id": 1,
-      "text": "Testando ToDo",
+      "id": "2e19",
+      "text": "Ver o curso de React",
       "isComplete": false
-    },
-    {
-      "id": 2,
-      "text": "Testando ToDo 2",
-      "isComplete": false
-    },
-    {
-      "id": 3,
-      "text": "Testando ToDo 3",
-      "isComplete": false
-    },
-    {
-      "id": "ead7",
-      "text": "[object Object]dasdsadasdas"
-    },
-    {
-      "id": "cdb1",
-      "text": "dsadasda"
     }
   ]
 }
