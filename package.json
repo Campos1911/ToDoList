@@ -6,6 +6,7 @@
     "dev": "next dev",
     "turbo": "next dev --turbo",
     "build": "next build",
+    "backend": "json-server --watch db.json --port 5000",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,6 +16,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.4",
+    "json-server": "^1.0.0-alpha.23",
     "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
