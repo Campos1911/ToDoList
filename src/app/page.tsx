@@ -1,15 +1,50 @@
 "use client";
 
-import { Flex, Text, Progress } from "@chakra-ui/react";
-export default function Home() {
+import { Input, Button, Flex, Text } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
 
-  const teste = () => {
-    window.alert("Olá mundo")
-  }
+import Todo from "../components/TodoList/todo";
+import Todoform from "../components/Todo Form/todoform";
+
+import "./page.css";
+import { dadosProps } from "@/interfaces/dadosProps";
+
+export default function Home() {
+  type dadosType = {
+    text: string;
+    isComplete: boolean;
+  };
+
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/todos", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setDados(data));
+  });
 
   return (
-    <Flex h="100vh" justifyContent="center" alignItems="center" flexDir={"column"}>
-      <Text>Este é o template de React para CT Junior, criado em 2023</Text>
+    <Flex flexDir="column" alignItems="center" padding="30px" marginTop="14vh">
+      <Text
+        fontSize="36px"
+        fontWeight="bold"
+        color="white"
+        marginRight="28vw"
+        marginBottom="5vh"
+      >
+        T O D O
+      </Text>
+      <Todoform />
+      <div className="todo-list">
+      {dados.map((todo:dadosProps) => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
+      </div>
     </Flex>
   );
 }
