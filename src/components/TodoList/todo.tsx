@@ -1,6 +1,5 @@
 import { dadosProps } from "@/interfaces/dadosProps";
 import { Button, Checkbox, Flex, Text } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 
 export default function Todo({ todo }: { todo: dadosProps }) {
   const removeTodo = () => {
@@ -30,18 +29,28 @@ export default function Todo({ todo }: { todo: dadosProps }) {
         padding="10px 300px"
         borderBottom="solid 1px rgb(48, 48, 66)"
       >
-        <Checkbox marginRight="8px" onChange={checkedTodo} />
+        <Button
+          marginTop="5px"
+          color="white"
+          backgroundColor="rgb(0, 196, 29)"
+          size="xs"
+          marginRight="8px"
+          onClick={checkedTodo}
+        >
+          ✓
+        </Button>
         <Text
           as={todo.isComplete ? "s" : "p"}
           color="white"
           marginTop="3px"
-          fontSize="12px"
+          fontSize="16px"
         >
           {todo.text}
         </Text>
         <Button
           color="white"
           marginLeft="8px"
+          marginTop="5px"
           size="xs"
           variant="outline"
           _hover={{ bgColor: "white", color: "black" }}

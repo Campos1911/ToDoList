@@ -16,6 +16,7 @@ export default function Home() {
   };
 
   const [dados, setDados] = useState([]);
+  const [filter, setFilter] = useState("All");
 
   useEffect(() => {
     fetch("http://localhost:5000/todos", {
@@ -41,16 +42,25 @@ export default function Home() {
           T O D O
         </Text>
         <Flex marginTop="1vh">
-          <Select color="black" borderColor="black" _hover={{ borderColor: "rgb(27, 27, 50)"}}  focusBorderColor="null">
-            <option value="">Escolha um filtro</option>
-            <option value="done">Concluídas</option>
-            <option value="awaiting">Não concluídas</option>
+          <Select
+            color="black"
+            borderColor="black"
+            _hover={{ borderColor: "rgb(27, 27, 50)" }}
+            focusBorderColor="null"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="All">Todos</option>
+            <option value="Completo">Concluídas</option>
+            <option value="Incompleto">Não concluídas</option>
           </Select>
         </Flex>
       </Flex>
       <Todoform />
       <div className="todo-list">
-        {dados.map((todo: dadosProps) => (
+        {dados
+        .filter((todo: dadosProps) => filter === "All" ? true : filter === "Completo" ? todo.isComplete : !todo.isComplete)
+        .map((todo: dadosProps) => (
           <Todo key={todo.id} todo={todo} />
         ))}
       </div>

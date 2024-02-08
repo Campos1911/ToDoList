@@ -1,9 +1,3 @@
 {
-  "todos": [
-    {
-      "text": "Correr na praia",
-      "isComplete": false,
-      "id": "dadc"
-    }
-  ]
+  "todos": []
 }
