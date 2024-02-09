@@ -1,14 +1,11 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 
 import { Flex, Input, Button } from "@chakra-ui/react";
 
-import { dadosProps } from "@/interfaces/dadosProps";
-
-
 const todoform = () => {
-  const [value, setValue] = useState({text: "", isComplete: false});
+  const [value, setValue] = useState({text: "", isComplete: false}); //Objeto para receber os dados da nova tarefa e passar para o DB
 
-  const dbWrite = () => {
+  const dbWrite = () => { //Função para escrever uma nova tarefa
     fetch("http://localhost:5000/todos", {
         method: "POST",
         headers: {
@@ -20,13 +17,13 @@ const todoform = () => {
         .then((data) => console.log(data));
   }
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => { //Função para pegar a mudança no input e salvar no useState
     const { name, value } = event.target;
     setValue((anterior) => ({ ...anterior, [name]: value }));
     console.log(value);
   }
 
-  const handleClick = () => {
+  const handleClick = () => { //Função para limpar o campo de input e salvar no DB
     if(!value) return
     setValue({text: "", isComplete: false});
     dbWrite();

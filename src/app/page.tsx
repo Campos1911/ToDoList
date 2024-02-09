@@ -1,24 +1,25 @@
 "use client";
 
-import { Input, Button, Flex, Text, Select } from "@chakra-ui/react";
+import { Flex, Text, Select } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import { dadosProps } from "@/interfaces/dadosProps";
 
 import Todo from "../components/TodoList/todo";
 import Todoform from "../components/Todo Form/todoform";
 
 import "./page.css";
-import { dadosProps } from "@/interfaces/dadosProps";
 
 export default function Home() {
   type dadosType = {
+    //Criando o tipo dos dados
     text: string;
     isComplete: boolean;
   };
 
-  const [dados, setDados] = useState([]);
-  const [filter, setFilter] = useState("All");
+  const [dados, setDados] = useState([]); //Pega os dados vindos do Data Base Local
+  const [filter, setFilter] = useState("All"); //Estado inicial mostra todos os objetos
 
-  useEffect(() => {
+  useEffect(() => { //Use Effect para executar o fetch apenas uma vez
     fetch("http://localhost:5000/todos", {
       method: "GET",
       headers: {
@@ -26,7 +27,7 @@ export default function Home() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setDados(data));
+      .then((data) => setDados(data)); //Depois de consumir ela passa para a const "dados"
   });
 
   return (
@@ -42,7 +43,7 @@ export default function Home() {
           T O D O
         </Text>
         <Flex marginTop="1vh">
-          <Select
+          <Select /**Usado para fazer o filtro**/
             color="black"
             borderColor="black"
             _hover={{ borderColor: "rgb(27, 27, 50)" }}
@@ -58,11 +59,17 @@ export default function Home() {
       </Flex>
       <Todoform />
       <div className="todo-list">
-        {dados
-        .filter((todo: dadosProps) => filter === "All" ? true : filter === "Completo" ? todo.isComplete : !todo.isComplete)
-        .map((todo: dadosProps) => (
-          <Todo key={todo.id} todo={todo} />
-        ))}
+        {dados //Aqui o ".filter() seguido do .map() são os responsáveis por mostrar os objetos da To Do List"
+          .filter((todo: dadosProps) =>
+            filter === "All" //Validações do filtro
+              ? true
+              : filter === "Completo"
+              ? todo.isComplete
+              : !todo.isComplete
+          )
+          .map((todo: dadosProps) => ( //Map para pegar as tarefas
+            <Todo key={todo.id} todo={todo} />
+          ))}
       </div>
     </Flex>
   );
